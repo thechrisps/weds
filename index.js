@@ -2,6 +2,9 @@ var express = require("express");
 var app = express();
 var router = express.Router();
 var path = __dirname + '/views/';
+// MUST ENABLED THIS PORT NUMBER TO WORK IN AZURE!
+var portno = process.env.PORT;
+//var portno = 3000;
 
 router.use(function (req,res,next) {
   console.log("/" + req.method);
@@ -15,11 +18,13 @@ router.get("/",function(req,res){
 
 app.use("/",router);
 
+app.use(express.static('views'))
+
 app.use("*",function(req,res){
   console.log("Providing "+path+"404.html");
   res.sendFile(path + "404.html");
 });
 
-app.listen(process.env.PORT,function(){
+app.listen(portno,function(){
   console.log("App up! Live at Port"+process.env.PORT);
 });
