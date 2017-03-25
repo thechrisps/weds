@@ -3,5 +3,5 @@ production: {
     app: {
         name: 'weds'
     },
-    port: process.env.port,
+    port: 3000,
 }
