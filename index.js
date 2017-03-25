@@ -9,12 +9,14 @@ router.use(function (req,res,next) {
 });
 
 router.get("/",function(req,res){
+  console.log("Providing "+path+"index.html");
   res.sendFile(path + "index.html");
 });
 
 app.use("/",router);
 
 app.use("*",function(req,res){
+  console.log("Providing "+path+"404.html");
   res.sendFile(path + "404.html");
 });
 
