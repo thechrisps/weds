@@ -1,1 +1,10 @@
 h1 {font-family: 'Bad Script', cursive; font-size:30px;}
+@media only screen and (min-width: 768px) {
+  #stdlarge { display: block;}
+  #stdsmall { display: none;}
+}
+
+@media only screen and (max-width: 479px) {
+  #stdlarge { display: none;}
+  #stdsmall { display: block;}
+}
