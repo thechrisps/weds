@@ -6,6 +6,9 @@ var path = __dirname + '/views/';
 var portno = process.env.PORT;
 //var portno = 3000;
 
+// SECRETS
+http://blog.syntaxc4.net/post/2012/07/26/accessing-app-settings-configured-in-microsoft-azure-web-sites-using-php-and-node-js.aspx
+
 router.use(function (req,res,next) {
   console.log("/" + req.method);
   next();
