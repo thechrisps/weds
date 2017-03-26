@@ -1,10 +1,10 @@
 h1 {font-family: 'Bad Script', cursive; font-size:30px;}
 @media only screen and (min-width: 768px) {
-  #stdlarge { display: block;}
-  #stdsmall { display: none;}
+  #stdlarge img { width: 502px; height:337px;}
 }
 
 @media only screen and (max-width: 479px) {
-  #stdlarge { display: none;}
-  #stdsmall { display: block;}
+  #stdlarge img { width:305px; height: 205px;}
 }
+
+.logoTopPad {padding-top:50px;}
