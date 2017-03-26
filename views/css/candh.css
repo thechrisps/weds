@@ -3,7 +3,7 @@ h1 {font-family: 'Bad Script', cursive; font-size:30px;}
   #stdlarge img { width: 502px; height:337px;}
 }
 
-@media only screen and (max-width: 479px) {
+@media only screen and (max-width: 579px) {
   #stdlarge img { width:305px; height: 205px;}
 }
 
