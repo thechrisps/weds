@@ -19,6 +19,11 @@ router.get("/",function(req,res){
   res.sendFile(path + "index.html");
 });
 
+router.get("/dev/",function(req,res){
+  console.log("Development Request Reeived");
+  res.send("Password:"+process.env.password);
+});
+
 app.use("/",router);
 
 app.use(express.static('views'))
