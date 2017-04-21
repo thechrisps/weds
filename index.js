@@ -20,8 +20,8 @@ router.get("/",function(req,res){
 });
 
 router.get("/dev/",function(req,res){
-  console.log("Development Request Reeived");
-  res.send("Password:"+process.env.password);
+  console.log("Development Request Received");
+  res.send("Password:");
 });
 
 app.use("/",router);
