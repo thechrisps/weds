@@ -21,7 +21,7 @@ router.get("/",function(req,res){
 
 router.get("/dev/",function(req,res){
   console.log("Development Request Received");
-  res.send("Password:");
+  res.send("Password:"+process.env.password);
 });
 
 app.use("/",router);
