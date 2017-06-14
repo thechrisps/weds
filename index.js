@@ -21,7 +21,7 @@ router.get("/",function(req,res){
 
 router.get("/dev/",function(req,res){
   console.log("Development Request Received");
-  res.send("Vars:"+process.env.toString());
+  res.send("Vars:"+process.env.MYSQLCONNSTR_localdb);
 });
 
 app.use("/",router);
