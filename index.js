@@ -12,7 +12,7 @@ router.use(function (req,res,next) {
   next();
 });
 
-//require("./invite")(app);
+require("./invite")(app);
 
 router.get("/",function(req,res){
   console.log("Providing "+path+"index.html");
