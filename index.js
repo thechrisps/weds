@@ -1,6 +1,6 @@
 var express = require("express");
 var app = express();
-var utils = require("./utils");
+var utils = require("utils");
 var router = express.Router();
 var path = __dirname + '/views/';
 // MUST ENABLED THIS PORT NUMBER TO WORK IN AZURE!
