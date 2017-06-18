@@ -5,7 +5,7 @@ module.exports = {
 		var dataSourceRE = /.*Data Source=(.+?);.*/g;
 		var databaseRE = /.*Database=(.+?);.*/g;
 		var useRE = /.*User Id=(.+?);.*/g;
-		var passwordRE = /.*Password=(.+?)/g;
+		var passwordRE = /.*Password=(.+?)$/g;
 
 		var dataSourceArr = dataSourceRE.exec(connectionString)[1];
 		var databaseArr = databaseRE.exec(connectionString)[1];
