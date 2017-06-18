@@ -1,6 +1,7 @@
 module.exports = {
 	getDatabaseDefinition: function () {
 		var connectionString = process.env.MYSQLCONNSTR_localdb;
+		console.log(connectionString);
 		var dataSourceRE = /.*Data Source=(.+?);.*/g;
 		var databaseRE = /.*Database=(.+?);.*/g;
 		var useRE = /.*User Id=(.+?);.*/g;
