@@ -8,7 +8,7 @@ module.exports = {
 
 		var dataSourceArr = dataSourceRE.exec(connectionString)[1];
 		var databaseArr = databaseRE.exec(connectionString)[1];
-		var userArr = useRE.exec(connectionString[1]];
+		var userArr = useRE.exec(connectionString)[1];
 		var passwordArr = passwordRE.exec(connectionString)[1];
 
 		return [dataSourceArr, databaseArr, userArr, passwordArr];
