@@ -13,5 +13,9 @@ module.exports = {
 		var passwordArr = passwordRE.exec(connectionString)[1];
 
 		return [dataSourceArr, databaseArr, userArr, passwordArr];
+	},
+	dispatchJsonResponse: function (res, jsonContent) {
+		res.setHeader('Content-Type', 'application/json');
+		res.send(JSON.stringify(jsonConent));
 	}
 };
