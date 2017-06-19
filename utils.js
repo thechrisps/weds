@@ -16,6 +16,6 @@ module.exports = {
 	},
 	dispatchJsonResponse: function (res, jsonContent) {
 		res.setHeader('Content-Type', 'application/json');
-		res.send(JSON.stringify(jsonConent));
+		res.send(JSON.stringify(jsonContent));
 	}
 };
