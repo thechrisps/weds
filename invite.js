@@ -5,7 +5,7 @@ module.exports = function(app){
       var inviteCode = req.params.code;
       if (isValidInvite(inviteCode)) {
         utils.dispatchJsonResponse(res, {"status": "ok", "response": {"valid": "1"}});
-      }, else {
+      } else {
         utils.dispatchJsonResponse(res, {"status": "ok", "response": {"valid": "0"}});
       }
     });
