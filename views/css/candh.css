@@ -1,7 +1,7 @@
 h1 {font-family: 'Bad Script', cursive; font-size:30px;}
 
 @media only screen and (min-width: 768px) {
-    #contentBox { width: 40%; }
+    #contentBox { width: 40%; margin: auto; }
     #stdlarge img { width: 502px; height:337px;}
 }
 
@@ -14,9 +14,12 @@ h1 {font-family: 'Bad Script', cursive; font-size:30px;}
 
 .header {background: url(../img/web1920.jpg) no-repeat center center scroll;}
 
-#contentBox { 
-    background-color: rgba(200,200,200,0.3); 
-    font-size:14px;
+#contentBox {
+    padding: 15px;
+    background-color: rgba(200,200,200,0.4);
+    font-family: 'Arvo', serif;
+    font-size: 20px;
+    font-weight: bold; 
     color: #222;
 }
 
