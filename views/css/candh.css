@@ -1,13 +1,15 @@
 h1 {font-family: 'Bad Script', cursive; font-size:30px;}
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 580px) {
     #contentBox { width: 40%; margin: auto; }
     #stdlarge img { width: 502px; height:337px;}
+    .fullWidthFormElement { width: 50%; margin: 0 auto; }
 }
 
 @media only screen and (max-width: 579px) {
     #contentBox { width:100%; }
     #stdlarge img { width:305px; height: 205px;}
+    .fullWidthFormElement { width: 90%; }
 }
 
 .logoTopPad {padding-top:50px;}
@@ -15,24 +17,36 @@ h1 {font-family: 'Bad Script', cursive; font-size:30px;}
 .header {background: url(../img/web1920.jpg) no-repeat center center scroll;}
 
 #contentBox {
+    border-radius:15px;
     padding: 15px;
-    background-color: rgba(200,200,200,0.4);
+    margin-bottom:15px;
     font-family: 'Arvo', serif;
     font-size: 20px;
     font-weight: bold; 
     color: #222;
 }
 
+.contentBoxNoBackground {
+    background-color:none;
+}
+
+.contentBoxBackground {
+    background-color: rgba(230,230,230,0.9);
+}
+
+img#logo {
+    max-width:50%;
+}
+
 input[type="text"] {
     display: block;
-    margin: 0;
-    width: 100%;
     font-family: sans-serif;
     font-size: 18px;
-    text-align:center;
+    text-align: center;
     appearance: none;
-    box-shadow: none;
-    border-radius: none;
+    box-shadow: none; 
+    border-radius: 15px;
+    text-transform: uppercase;
 }
 input[type="text"] {
     padding: 10px;
@@ -44,4 +58,12 @@ input[type="text"].focus {
         border: solid 5px #969696;
 }
 
-.inviteButton { width: 40%; }
+.inviteButton {
+    width: 40%;
+    border-radius: 15px;
+}
+
+.centreFormElement {
+    width: 100%;
+    margin: 0;
+}
