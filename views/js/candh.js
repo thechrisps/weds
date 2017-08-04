@@ -8,7 +8,6 @@ $('#btnInviteSubmit').click(function (event) {
     $.ajax({
         url: '/validateinvite/'+enteredCode,
         error: cbInviteValidateError,
-        dataType: 'jsonp',
         success: cbInviteValidateSuccess,
         type: 'GET'
     });
