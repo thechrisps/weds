@@ -5,19 +5,19 @@ module.exports = function (app) {
         res.render("invite");
     });
 
-    app.get('/invite/:code', function(req, res){
-      var inviteCode = req.params.code;
-      if (isValidInvite(inviteCode)) {
-        res.render("register", { "friendlyName": "Bob" });
-      } else {
-        utils.dispatchJsonResponse(res, {"status": "ok", "response": {"valid": "0"}});
-      }
+    app.get('/invite/:code', function (req, res) {
+        var inviteCode = req.params.code;
+        if (isValidInvite(inviteCode)) {
+            res.render("register", { "friendlyName": "Bob" });
+        } else {
+            utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0" } });
+        }
     });
 
     app.get('/validateinvite/:code', function (req, res) {
         var inviteCode = req.params.code;
         if (isValidInvite(inviteCode)) {
-            utils.dispatchJsonResponse(res, {"status": "ok", "response": {"valid": "1"}});
+            utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "1" } });
         } else {
             utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0" } });
         }
@@ -27,8 +27,10 @@ module.exports = function (app) {
 }
 
 function isValidInvite(inviteCode) {
-  if (inviteCode == "ABCDEF") {
-    return true;
-  }
-  return false;
+    if (/^[A-Z]{5}$/.test(inviteCode)) {
+        //if (inviteCode == "ABCDEF") {
+            return true;
+        //}
+    }
+    return false;
 }
