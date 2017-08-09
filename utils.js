@@ -21,7 +21,7 @@ module.exports = {
 		res.send(JSON.stringify(jsonContent));
     },
     checkInvite: function (inviteCode, responseCb) {
-        var databaseDetails = getDatabaseDefinition();
+        var databaseDetails = utils.getDatabaseDefinition();
 
         var con = mysql.createConnection({
             host: databaseDetails[0],
