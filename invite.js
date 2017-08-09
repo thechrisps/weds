@@ -8,7 +8,9 @@ module.exports = function (app) {
     app.get('/invite/:code', function (req, res) {
         var inviteCode = req.params.code;
         if (isValidInvite(inviteCode)) {
-            res.render("register", { "friendlyName": "Bob" });
+            utils.checkInvite(inviteCode, function (friendlyName) {
+                res.render("register", { "friendlyName": friendlyName });
+            });
         } else {
             utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0" } });
         }

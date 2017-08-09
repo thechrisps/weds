@@ -1,3 +1,5 @@
+var mysql = require('mysql');
+
 module.exports = {
 	getDatabaseDefinition: function () {
 		var connectionString = process.env.MYSQLCONNSTR_localdb;
@@ -17,5 +19,50 @@ module.exports = {
 	dispatchJsonResponse: function (res, jsonContent) {
 		res.setHeader('Content-Type', 'application/json');
 		res.send(JSON.stringify(jsonContent));
-	}
+    },
+    checkInvite: function (inviteCode, responseCb) {
+        var databaseDetails = getDatabaseDefinition();
+
+        var con = mysql.createConnection({
+            host: databaseDetails[0],
+            user: databaseDetails[2],
+            password: databaseDetails[3],
+            database: databaseDetails[1]
+        });
+
+        con.connect(function (err) {
+            if (err) throw err;
+            con.query("SELECT * FROM invites WHERE inviteId = " + mysql.escape(inviteCode), function (err, result, fields) {
+                if (err) throw err;
+                console.log(result);
+
+                result.forEach(function (value) {
+                    responseCb(value["welcomeName"]);
+                    return;
+                });
+                responseCb("");
+                return;
+            });
+        });
+    },
+    registerEmail: function (inviteCode, email) {
+        var databaseDetails = getDatabaseDefinition();
+
+        var con = mysql.createConnection({
+            host: databaseDetails[0],
+            user: databaseDetails[2],
+            password: databaseDetails[3],
+            database: databaseDetails[1]
+        });
+
+        con.connect(function (err) {
+            if (err) throw err;
+            con.query("UPDATE invites SET contactEmail = "+mysql.escape(email)+" WHERE inviteId = " + mysql.escape(inviteCode), function (err, result) {
+                if (err) throw err;
+                console.log(result);
+
+                return result.affectedRows();
+            });
+        });
+    }
 };
