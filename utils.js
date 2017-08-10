@@ -24,7 +24,8 @@ module.exports = {
         var databaseDetails = module.exports.getDatabaseDefinition();
 
         var con = mysql.createConnection({
-            host: databaseDetails[0],
+            host: databaseDetails[0].split(":")[0],
+            port: databaseDetails[0].split(":")[1],
             user: databaseDetails[2],
             password: databaseDetails[3],
             database: databaseDetails[1]
