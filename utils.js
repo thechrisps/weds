@@ -22,6 +22,10 @@ module.exports = {
     },
     checkInvite: function (inviteCode, responseCb) {
         var databaseDetails = module.exports.getDatabaseDefinition();
+        console.log("Host: " + databaseDetails[0].split(":")[0]);
+        console.log("Port: " + databaseDetails[0].split(":")[1]);
+        console.log("User: " + databaseDetails[2]);
+        console.log("DB: " + databaseDetails[1]);
 
         var con = mysql.createConnection({
             host: databaseDetails[0].split(":")[0],
