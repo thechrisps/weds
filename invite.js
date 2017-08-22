@@ -19,13 +19,26 @@ module.exports = function (app) {
     app.get('/validateinvite/:code', function (req, res) {
         var inviteCode = req.params.code;
         if (isValidInvite(inviteCode)) {
-            utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "1" } });
+            utils.checkInvite(inviteCode, function (friendlyName) {
+                utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "1" } });
+            });
         } else {
             utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0" } });
         }
     });
 
-    //other routes..
+    app.get('/register/:code/', function (req, res) {
+        var inviteCode = req.params.code;
+        var email = req.query.email;
+        if (isValidInvite(inviteCode)) {
+            utils.checkInvite(inviteCode, function (friendlyName) {
+                utils.registerEmail(inviteCode, email);
+                utils.dispatchJsonResponse(res, { "status": "ok", "response": { "saved": "1" } });
+            });
+        } else {
+            utils.dispatchJsonResponse(res, { "status": "ok", "response": { "saved": "0" } });
+        }
+    });
 }
 
 function isValidInvite(inviteCode) {

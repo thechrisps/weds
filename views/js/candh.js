@@ -19,6 +19,30 @@ $('#btnInviteSubmit').click(function (event) {
     });
 });
 
+$('#btnRegister').click(function (event) {
+    event.preventDefault();
+
+    var email = $("#txtEmail").val();
+
+    $.ajax({
+        url: '/register/' + enteredCode,
+        data: {"email":email},
+        error: cbInviteValidateError,
+        success: function (data) {
+            if (data.response.saved === "1") {
+                BootstrapDialog.show({
+                    message: 'Hi Apple!'
+                });
+            } else {
+                BootstrapDialog.show({
+                    message: 'Boo'
+                });
+            }
+        },
+        type: 'GET'
+    });
+});
+
 var cbInviteValidateError = function (error, xhr) {
     $('#inviteMessage').html("<img src='img/exclaimation.png' alt='' /><br />Sorry, an error has occurred processing your request. Please drop us a message on Facebook or by phone. Thanks!");
 }
