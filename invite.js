@@ -20,7 +20,11 @@ module.exports = function (app) {
         var inviteCode = req.params.code;
         if (isValidInvite(inviteCode)) {
             utils.checkInvite(inviteCode, function (friendlyName) {
-                utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "1" } });
+                if (typeof friendlyName !== "undefined" &&  friendlyName != "") {
+                    utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "1" } });
+                } else {
+                    utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0" } });
+                }
             });
         } else {
             utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0" } });
