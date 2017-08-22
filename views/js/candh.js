@@ -32,11 +32,25 @@ $('#btnRegister').click(function (event) {
         success: function (data) {
             if (data.response.saved === "1") {
                 BootstrapDialog.show({
-                    message: 'Hi Apple!'
+                    title: 'E-Mail Saved!',
+                    message: 'Great, thanks! We have stored your email and will let you know when we are ready with the formal invites. If you need to change your email address, just come back here and submit a new address.',
+                    buttons: [{
+                        label: 'Close',
+                        action: function (dialogItself) {
+                            dialogItself.close();
+                        }
+                    }]
                 });
             } else {
                 BootstrapDialog.show({
-                    message: 'Boo'
+                    title: 'Ooops',
+                    message: 'Something went wrong :(. Please try again. If you get this message again, please drop Chris an email, Facebook message or phonecall. Thanks',
+                    buttons: [{
+                        label: 'Close',
+                        action: function (dialogItself) {
+                            dialogItself.close();
+                        }
+                    }]
                 });
             }
         },
