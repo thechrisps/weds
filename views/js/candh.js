@@ -23,9 +23,10 @@ $('#btnRegister').click(function (event) {
     event.preventDefault();
 
     var email = $("#txtEmail").val();
+    var invite = $("#hdnCode").val();
 
     $.ajax({
-        url: '/register/' + enteredCode,
+        url: '/register/' + invite,
         data: {"email":email},
         error: cbInviteValidateError,
         success: function (data) {
