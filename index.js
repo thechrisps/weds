@@ -16,9 +16,10 @@ router.use(function (req,res,next) {
 
 require("./invite")(app);
 
-router.get("/",function(req,res){
-  console.log("Providing "+path+"index.html");
-  res.sendFile(path + "index.html");
+router.get("/", function (req, res) {
+    res.redirect("/invite");
+  //console.log("Providing "+path+"index.html");
+  //res.sendFile(path + "index.html");
 });
 
 router.get("/dev/",function(req,res){
