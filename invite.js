@@ -11,8 +11,6 @@ module.exports = function (app) {
             utils.checkInvite(inviteCode, function (friendlyName) {
                 res.render("register", { "friendlyName": friendlyName, "inviteCode": inviteCode });
             });
-        } else {
-            utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0" } });
         }
     });
 
