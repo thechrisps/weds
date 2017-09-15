@@ -23,7 +23,7 @@ $('#btnRegister').click(function (event) {
     event.preventDefault();
 
     var email = $("#txtEmail").val();
-    var invite = $("#hdnCode").val();
+    var invite = $("#hdnInvite").val();
 
     $.ajax({
         url: '/register/' + invite,
