@@ -46,8 +46,12 @@ input[type="text"] {
     appearance: none;
     box-shadow: none; 
     border-radius: 15px;
+}
+
+textboxUppercase {
     text-transform: uppercase;
 }
+
 input[type="text"] {
     padding: 10px;
     border: solid 5px #c9c9c9;
