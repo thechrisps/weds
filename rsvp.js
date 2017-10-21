@@ -23,6 +23,7 @@ module.exports = function (app) {
                     if (dbResponse === "Error") {
                         utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0", "error": "We're very sorry, but something has gone wrong on this site. We cannot save your RSVP responses. Please try again, or contact us on Facebook / by phone." } });
                     } else {
+                        console.log("DB Response: " + dbResponse);
                         if (dbResponse > 0) {
                             // Returning success
                             utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "1" } });
