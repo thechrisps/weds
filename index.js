@@ -15,6 +15,7 @@ router.use(function (req,res,next) {
 });
 
 require("./invite")(app);
+require("./rsvp")(app);
 
 router.get("/", function (req, res) {
     res.redirect("/invite");
