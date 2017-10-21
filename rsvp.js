@@ -42,14 +42,10 @@ module.exports = function (app) {
 
     app.get('/rsvpview/:code/', function (req, res) {
         var inviteCode = req.params.code;
-        var email = req.query.email;
         if (isValidInvite(inviteCode)) {
             utils.checkInvite(inviteCode, function (friendlyName) {
-                utils.registerEmail(inviteCode, email);
-                utils.dispatchJsonResponse(res, { "status": "ok", "response": { "saved": "1" } });
+                res.render("rsvp", { "friendlyName": friendlyName, "inviteCode": inviteCode });
             });
-        } else {
-            utils.dispatchJsonResponse(res, { "status": "ok", "response": { "saved": "0" } });
         }
     });
 }
