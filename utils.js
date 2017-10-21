@@ -142,7 +142,7 @@ module.exports = {
                 console.log(result);
                 console.log("Rows affected: " + result.affectedRows);
                 
-                responseCb(result.affectedRows());
+                responseCb(result.affectedRows);
             });
         });
     }
