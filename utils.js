@@ -45,8 +45,8 @@ module.exports = {
                     responseCb(value["welcomeName"]);
                     return;
                 });
-                //responseCb("");
-                //return;
+                responseCb("");
+                return;
             });
         });
     },
