@@ -115,7 +115,7 @@ module.exports = {
             });
         });
     },
-    updateRSVP: function (inviteCode, personId, ceremony, reception, evening, requirements) {
+    updateRSVP: function (inviteCode, personId, ceremony, reception, evening, requirements, responseCb) {
         var databaseDetails = module.exports.getDatabaseDefinition();
 
         var con = mysql.createConnection({
@@ -137,12 +137,12 @@ module.exports = {
                 
                 if (err) {
                     console.log("DB Error on query: " + err);
-                    return "Error";
+                    responseCb("Error");
                 }
                 console.log(result);
                 console.log("Rows affected: " + result.affectedRows);
                 
-                return result.affectedRows();
+                responseCb(result.affectedRows());
             });
         });
     }

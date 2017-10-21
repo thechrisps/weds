@@ -19,17 +19,17 @@ module.exports = function (app) {
         if (isValidInvite(inviteCode)) {
             utils.checkInvite(inviteCode, function (friendlyName) {
                 if (friendlyName != "") {
-                    dbResponse = utils.updateRSVP(inviteCode, person, ceremony, reception, evening, requirements);
-                    if (dbResponse === "Error") {
-                        utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0", "error": "We're very sorry, but something has gone wrong on this site. We cannot save your RSVP responses. Please try again, or contact us on Facebook / by phone." } });
-                    } else {
-                        console.log("DB Response: " + dbResponse);
-                        if (dbResponse > 0) {
+                    dbResponse = utils.updateRSVP(inviteCode, person, ceremony, reception, evening, requirements, function (results) {
+                        console.log("DB Response: " + results);
+                        if (results != "Error" && results > 0) {
                             // Returning success
                             utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "1" } });
                         } else {
                             utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0", "error": "We're very sorry, but for some reason, your response has not been saved. Please try again, or contact us on Facebook / by phone." } });
                         }
+                    });
+                    if (dbResponse === "Error") {
+                        utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0", "error": "We're very sorry, but we have been unable to connect to our database. We cannot save your RSVP responses. Please try again, or contact us on Facebook / by phone." } });
                     }
                 } else {
                     utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0", "error": "Invite code " + inviteCode + " does not seem to be a code that we recognise." } });
