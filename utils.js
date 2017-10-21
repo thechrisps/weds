@@ -131,7 +131,7 @@ module.exports = {
                 console.log("DB Error on connection: " + err);
                 return "Error";
             }
-            queryString = "UPDATE people SET attendCeremony = " + ceremony + ", attendReception = " + reception + ", attendEvening = " + evening + ", requirements = " + requirements + " WHERE id = " + personId;
+            queryString = "UPDATE people SET attendCeremony = " + ceremony + ", attendReception = " + reception + ", attendEvening = " + evening + ", requirements = " + mysql.escape(requirements) + " WHERE id = " + personId;
             console.log("Running RSVP Save: " + queryString);
             con.query(queryString, function (err, result) {
                 
