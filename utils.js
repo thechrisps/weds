@@ -131,7 +131,9 @@ module.exports = {
                 console.log("DB Error on connection: " + err);
                 return "Error";
             }
-            con.query("UPDATE people SET attendCeremony = " + ceremony + ", attendReception = " + reception + ", attendEvening = " + evening + ", requirements = " + requirements + " WHERE id = " + personId, function (err, result) {
+            queryString = "UPDATE people SET attendCeremony = " + ceremony + ", attendReception = " + reception + ", attendEvening = " + evening + ", requirements = " + requirements + " WHERE id = " + personId;
+            console.log("Running RSVP Save: " + queryString);
+            con.query(queryString, function (err, result) {
                 
                 if (err) {
                     console.log("DB Error on query: " + err);
