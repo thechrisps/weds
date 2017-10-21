@@ -41,6 +41,7 @@ module.exports = {
                 if (err) throw err;
                 console.log(result);
 
+                console.log("Results found for "+inviteCode+": "+result.length);
                 result.forEach(function (value) {
                     responseCb(value["welcomeName"]);
                     return;
