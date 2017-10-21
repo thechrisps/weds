@@ -127,7 +127,7 @@ module.exports = {
         });
 
         con.connect(function (err) {
-            if (err) throw err;
+            if (err) { return "Error";}
             con.query("UPDATE people SET attendCeremony = " + ceremony + ", attendReception = "+reception+", attendEvening = "+evening+", requirements = "+requirements+" WHERE id = " + personId, function (err, result) {
                 if (err) throw err;
                 console.log(result);
