@@ -41,13 +41,17 @@ module.exports = {
                 if (err) throw err;
                 console.log(result);
 
-                console.log("Results found for "+inviteCode+": "+result.length);
-                result.forEach(function (value) {
-                    responseCb(value["welcomeName"]);
+                console.log("Results found for " + inviteCode + ": " + result.length);
+
+                if (result.length > 0) {
+                    result.forEach(function (value) {
+                        responseCb(value["welcomeName"]);
+                        return;
+                    });
+                } else {
+                    responseCb("");
                     return;
-                });
-                //responseCb("");
-                //return;
+                }
             });
         });
     },
