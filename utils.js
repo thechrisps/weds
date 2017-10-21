@@ -75,5 +75,65 @@ module.exports = {
                 return result.affectedRows();
             });
         });
+    },
+    getPeopleForInvite: function (inviteCode, responseCb) {
+        var databaseDetails = module.exports.getDatabaseDefinition();
+        console.log("Host: " + databaseDetails[0].split(":")[0]);
+        console.log("Port: " + databaseDetails[0].split(":")[1]);
+        console.log("User: " + databaseDetails[2]);
+        console.log("DB: " + databaseDetails[1]);
+
+        var con = mysql.createConnection({
+            host: databaseDetails[0].split(":")[0],
+            port: databaseDetails[0].split(":")[1],
+            user: databaseDetails[2],
+            password: databaseDetails[3],
+            database: databaseDetails[1]
+        });
+
+        con.connect(function (err) {
+            if (err) throw err;
+            con.query("SELECT * FROM people WHERE invite = " + mysql.escape(inviteCode), function (err, result, fields) {
+                if (err) throw err;
+                console.log(result);
+
+                console.log("People found for " + inviteCode + ": " + result.length);
+
+                if (result.length > 0) {
+                    var people = [];
+                    var person = 0;
+                    result.forEach(function (value) {
+                        thisPerson = { "id": value[id], "invite": value[invite], "name": value[name], "ceremony": value[attendCeremony], "reception": value[attendReception], "evening": value[attendEvening], "requirements": value[requirements] };
+                        people[person] = thisPerson;
+                        person++;
+                    });
+                    responseCb(people);
+                } else {
+                    responseCb("");
+                    return;
+                }
+            });
+        });
+    },
+    updateRSVP: function (inviteCode, personId, ceremony, reception, evening, requirements) {
+        var databaseDetails = module.exports.getDatabaseDefinition();
+
+        var con = mysql.createConnection({
+            host: databaseDetails[0].split(":")[0],
+            port: databaseDetails[0].split(":")[1],
+            user: databaseDetails[2],
+            password: databaseDetails[3],
+            database: databaseDetails[1]
+        });
+
+        con.connect(function (err) {
+            if (err) throw err;
+            con.query("UPDATE people SET attendCeremony = " + ceremony + ", attendReception = "+reception+", attendEvening = "+evening+", requirements = "+requirements+" WHERE id = " + personId, function (err, result) {
+                if (err) throw err;
+                console.log(result);
+
+                return result.affectedRows();
+            });
+        });
     }
 };

@@ -12,8 +12,9 @@ module.exports = function (app) {
         var ceremony = ((req.query.ceremony === "yes") ? 1 : 0);
         var reception = ((req.query.reception === "yes") ? 1 : 0);
         var evening = ((req.query.evening === "yes") ? 1 : 0)
+        var requirements = jsesc(req.query.requirements);
 
-        console.log("Updating attendance for person " + person + " on invite " + inviteCode + ". Attending... ceremony: " + ceremony + ", reception: " + reception + ", evening: " + evening);
+        console.log("Updating attendance for person " + person + " on invite " + inviteCode + ". Attending... ceremony: " + ceremony + ", reception: " + reception + ", evening: " + evening+". Requirements: "+requirements);
 
         if (isValidInvite(inviteCode)) {
             utils.checkInvite(inviteCode, function (friendlyName) {
