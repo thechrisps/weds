@@ -119,12 +119,13 @@ $('#btnSaveRsvp').click(function (event) {
         $.when.apply($, deferreds).done(function () {
             console.log(arguments); //array of responses [0][data, status, xhrObj],[1][data, status, xhrObj]...
             var allOk = true;
-            arguments.forEach(function (argument) {
-                console.log("Response correctly processed? " + argument[0].response.valid);
-                if (argument[0].response.valid == 0) {
+
+            for (var i = 0; i < formIds.length; i++) {
+                console.log("Response correctly processed? " + argument[i.toString].response.valid);
+                if (argument[i.toString].response.valid == 0) {
                     allOk = false;
                 }
-            });
+            }
 
             if (!allOk) {
                 cbSaveRsvpAjaxError();
