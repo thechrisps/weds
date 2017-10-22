@@ -49,23 +49,23 @@
                                 <td><%= people[i].name %></td>
                                 <td>
                                     <select class="form-control" id='ceremony<%= people[i].id%>' onchange="setCanSave()">
-                                        <option value="1" <%if (people[i].ceremony==="1") {%>selected<%}%>>Yes</option>
-                                        <option value="0" <%if (people[i].ceremony==="0") {%>selected<%}%>>No</option>
-                                        <option value="-1" <%if (people[i].ceremony==="-1") {%>selected<%}%>>Don't Know</option>
+                                        <option value="1" <%if (people[i].ceremony==1) {%>selected<%}%>>Yes</option>
+                                        <option value="0" <%if (people[i].ceremony==0) {%>selected<%}%>>No</option>
+                                        <option value="-1" <%if (people[i].ceremony==-1) {%>selected<%}%>>Don't Know</option>
                                     </select>
                                 </td>
                                 <td>
                                     <select class="form-control" id='reception<%= people[i].id%>' onchange="setCanSave()">
-                                        <option value="1" <%if (people[i].reception==="1") {%>selected<%}%>>Yes</option>
-                                        <option value="0" <%if (people[i].reception==="0") {%>selected<%}%>>No</option>
-                                        <option value="-1" <%if (people[i].reception==="-1") {%>selected<%}%>>Don't Know</option>
+                                        <option value="1" <%if (people[i].reception==1) {%>selected<%}%>>Yes</option>
+                                        <option value="0" <%if (people[i].reception==0) {%>selected<%}%>>No</option>
+                                        <option value="-1" <%if (people[i].reception==-1) {%>selected<%}%>>Don't Know</option>
                                     </select>
                                 </td>
                                 <td>
                                     <select class="form-control" id='evening<%= people[i].id%>' onchange="setCanSave()">
-                                        <option value="1" <%if (people[i].evening==="1") {%>selected<%}%>>Yes</option>
-                                        <option value="0" <%if (people[i].evening==="0") {%>selected<%}%>>No</option>
-                                        <option value="-1" <%if (people[i].evening==="-1") {%>selected<%}%>>Don't Know</option>
+                                        <option value="1" <%if (people[i].evening==1) {%>selected<%}%>>Yes</option>
+                                        <option value="0" <%if (people[i].evening==0) {%>selected<%}%>>No</option>
+                                        <option value="-1" <%if (people[i].evening==-1) {%>selected<%}%>>Don't Know</option>
                                     </select>
                                 </td>
                                 <td>
