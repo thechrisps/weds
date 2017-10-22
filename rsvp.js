@@ -1,5 +1,6 @@
 var utils = require("./utils");
 var jsesc = require('jsesc');
+const util = require('util')
 
 module.exports = function (app) {
     app.get('/rsvp/', function (req, res) {
@@ -8,7 +9,7 @@ module.exports = function (app) {
 
     app.get('/rsvpsave/:code', function (req, res) {
         var inviteCode = jsesc(req.params.code);
-        console.log("RSVP Save == Code:" + inviteCode + ". Query String: " + req.query);
+        console.log("RSVP Save == Code:" + inviteCode + ". Query String: " + util.inspect(req.query, false, null));
         var person = ((isNaN(req.query.personid) == false) ? req.query.personid : 0);
         var ceremony = ((req.query.ceremony === "yes") ? 1 : 0);
         var reception = ((req.query.reception === "yes") ? 1 : 0);
