@@ -60,8 +60,8 @@ module.exports = function (app) {
         var inviteCode = req.params.code;
         if (isValidInvite(inviteCode)) {
             utils.checkInvite(inviteCode, function (friendlyName) {
-                getPeopleForInvite(inviteCode, function (people) {
-                    res.render("rsvp", { "inviteCode": inviteCode, "people": people });
+                getPeopleForInvite(inviteCode, function () {
+                    res.render("rsvp", { "inviteCode": inviteCode, "people": [{ name: "Joe", personId: "1", ceremony: "1", reception: "1", evening: "-1", requirements: "None" }, { name: "Fred", personId: "2", ceremony: "-1", reception: "-1", evening: "0", requirements: "Vegan" }] });
                 });
             });
         }
