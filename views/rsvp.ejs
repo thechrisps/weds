@@ -12,6 +12,7 @@
             </div>
         </div>
         <!-- /.row -->
+        <input type="hidden" name="hdnInvite" id="hdnInvite" value="<%= inviteCode %>">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <table class="table table-hover">
@@ -30,34 +31,35 @@
                             <tr>
                                 <td><%= people[i].name %></td>
                                 <td>
-                                    <select class="form-control">
-                                        <option value="yes" <%if (people[i].ceremony==="1") {%>selected<%}%>>Yes</option>
-                                        <option value="no" <%if (people[i].ceremony==="0") {%>selected<%}%>>No</option>
-                                        <option value="unknown" <%if (people[i].ceremony==="-1") {%>selected<%}%>>Don't Know</option>
+                                    <select class="form-control" id='ceremony<%= people[i].personId%>'>
+                                        <option value="1" <%if (people[i].ceremony==="1") {%>selected<%}%>>Yes</option>
+                                        <option value="0" <%if (people[i].ceremony==="0") {%>selected<%}%>>No</option>
+                                        <option value="-1" <%if (people[i].ceremony==="-1") {%>selected<%}%>>Don't Know</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-control">
-                                        <option value="yes" <%if (people[i].reception==="1") {%>selected<%}%>>Yes</option>
-                                        <option value="no" <%if (people[i].reception==="0") {%>selected<%}%>>No</option>
-                                        <option value="unknown" <%if (people[i].reception==="-1") {%>selected<%}%>>Don't Know</option>
+                                    <select class="form-control" id='reception<%= people[i].personId%>'>
+                                        <option value="1" <%if (people[i].reception==="1") {%>selected<%}%>>Yes</option>
+                                        <option value="0" <%if (people[i].reception==="0") {%>selected<%}%>>No</option>
+                                        <option value="-1" <%if (people[i].reception==="-1") {%>selected<%}%>>Don't Know</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-control">
-                                        <option value="yes" <%if (people[i].evening==="1") {%>selected<%}%>>Yes</option>
-                                        <option value="no" <%if (people[i].evening==="0") {%>selected<%}%>>No</option>
-                                        <option value="unknown" <%if (people[i].evening==="-1") {%>selected<%}%>>Don't Know</option>
+                                    <select class="form-control" id='evening<%= people[i].personId%>'>
+                                        <option value="1" <%if (people[i].evening==="1") {%>selected<%}%>>Yes</option>
+                                        <option value="0" <%if (people[i].evening==="0") {%>selected<%}%>>No</option>
+                                        <option value="-1" <%if (people[i].evening==="-1") {%>selected<%}%>>Don't Know</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" id="txtRequirements" value='<%= people[i].requirements%>' placeholder="Enter special requirements/requests">
+                                    <input type="text" class="form-control" id='txtRequirements<%= people[i].personId%>' value='<%= people[i].requirements%>' placeholder="Enter special requirements/requests" id='requirements<%= people[i].personId%>'>
                                 </td>
                             </tr>
                         </form>
                         <% } %>
                     </tbody>
                 </table>
+                <button type="button" class="btn btn-primary" id="btnSaveRsvp">Save Responses</button>&nbsp;&nbsp;<div id="lblSave"></div>
             </div>
         </div>
     </div>
