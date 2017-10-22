@@ -80,7 +80,7 @@ $('#btnSaveRsvp').click(function (event) {
     event.preventDefault();
     var invite = $("#hdnInvite").val();
     $('#btnSaveRsvp').prop("disabled", true);
-    $('#lblSave').html("Saving...");
+    $('#btnSaveRsvp').html("Saving; Please wait...");
 
     // Find all forms on the page
     var forms = [];
