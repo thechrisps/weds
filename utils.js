@@ -103,14 +103,15 @@ module.exports = {
                     var people = [];
                     var person = 0;
                     console.log("Entered people enumeration");
-                    result.forEach(function (value) {
-                        console.log("Retreived person " + value[id] + " on invite " + value[invite] + " == ceremony: " + value[attendCeremony] + ", reception: " + value[attendReception] + ", evening: " + value[attendEvening] + ", requirements: " + value[requirements]);
-                        thisPerson = { "id": value[id], "invite": value[invite], "name": value[name], "ceremony": value[attendCeremony], "reception": value[attendReception], "evening": value[attendEvening], "requirements": value[requirements] };
+                    for (var i = 0; i < result.length; i++) {
+                        console.log("Retreived person " + result[i].id + " on invite " + result[i].invite + " == ceremony: " + result[i].attendCeremony + ", reception: " + result[i].attendReception + ", evening: " + result[i].attendEvening + ", requirements: " + result[i].requirements);
+                        thisPerson = { "id": result[i].id, "invite": result[i].invite, "name": result[i].name, "ceremony": result[i].attendCeremony, "reception": result[i].attendReception, "evening": result[i].attendEvening, "requirements": result[i].requirements };
                         people[person] = thisPerson;
                         person++;
-                    });
+                    }
                     responseCb(people);
                 } else {
+                    console.log("Returning blank response");
                     responseCb("");
                     return;
                 }
