@@ -66,7 +66,7 @@ module.exports = function (app) {
                         res.render("rsvp", { "inviteCode": inviteCode, "friendlyName": friendlyName, "people": people });
                     });
                 } else {
-                    return res.redirect("/invite/");
+                    res.render("invite");
                 }
             });
         }
