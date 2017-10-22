@@ -121,8 +121,8 @@ $('#btnSaveRsvp').click(function (event) {
             var allOk = true;
 
             for (var i = 0; i < formIds.length; i++) {
-                console.log("Response correctly processed? " + arguments[i.toString][0].response.valid);
-                if (arguments[i.toString][0].response.valid == 0) {
+                console.log("Response correctly processed? " + arguments[i.toString()][0].response.valid);
+                if (arguments[i.toString()][0].response.valid == 0) {
                     allOk = false;
                 }
             }
