@@ -31,7 +31,7 @@
                             <tr>
                                 <td><%= people[i].name %></td>
                                 <td>
-                                    <select class="form-control" id='ceremony<%= people[i].personId%>' onchange="setCanSave()">
+                                    <select class="form-control" id='ceremony<%= people[i].id%>' onchange="setCanSave()">
                                         <option value="1" <%if (people[i].ceremony==="1") {%>selected<%}%>>Yes</option>
                                         <option value="0" <%if (people[i].ceremony==="0") {%>selected<%}%>>No</option>
                                         <option value="-1" <%if (people[i].ceremony==="-1") {%>selected<%}%>>Don't Know</option>

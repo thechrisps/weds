@@ -1,4 +1,5 @@
 ﻿function cbSaveRsvpAjaxError() {
+    changeSaveRsvpButton("save");
     BootstrapDialog.show({
         title: 'Ooops',
         message: 'Sorry, but unfortunately we were unable to save the response for all people on this invite. Please ensure you have selected responses for each person and try again. If the problem persists, give us a call or message us on Facebook. Thanks.',
