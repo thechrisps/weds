@@ -44,7 +44,7 @@ module.exports = function (app) {
         var inviteCode = req.params.code;
         if (isValidInvite(inviteCode)) {
             utils.checkInvite(inviteCode, function (friendlyName) {
-                res.render("rsvp", { "people": [{ name: "Joe", ceremony: "1", reception: "1", evening: "-1", requirements: "None" }, { name: "Fred", ceremony: "-1", reception: "-1", evening: "0", requirements: "Vegan" }] });
+                res.render("rsvp", { "people": [{ name: "Joe", personId: "1", ceremony: "1", reception: "1", evening: "-1", requirements: "None" }, { name: "Fred", personId: "2", ceremony: "-1", reception: "-1", evening: "0", requirements: "Vegan" }] });
             });
         }
     });
