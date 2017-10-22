@@ -11,8 +11,38 @@
     });
 }
 
+function changeSaveRsvpButton(changeTo) {
+    switch (changeTo) {
+        case "save":
+            clearRsvpButtonState();
+            $('#btnSaveRsvp').addClass("btn-primary");
+            $('#btnSaveRsvp').prop("disabled", false);
+            $('#btnSaveRsvp').html("Save Responses");
+            break;
+        case "saving":
+            clearRsvpButtonState();
+            $('#btnSaveRsvp').addClass("btn-primary");
+            $('#btnSaveRsvp').prop("disabled", true);
+            $('#btnSaveRsvp').html("Saving; Please wait...");
+            break;
+        case "saved":
+            clearRsvpButtonState();
+            $('#btnSaveRsvp').addClass("btn-success");
+            $('#btnSaveRsvp').prop("disabled", false);
+            $('#btnSaveRsvp').html("Saved! Thanks!");
+            break;
+        default:
+            console.log("Cannot change button - unknown state: " + changeTo);
+    }
+}
+
+function clearRsvpButtonState() {
+    $('#btnSaveRsvp').removeClass("btn-primary");
+    $('#btnSaveRsvp').removeClass("btn-success");
+}
+
 function setCanSave() {
-    $('#btnSaveRsvp').html("Save Responses");
+    changeSaveRsvpButton("save");
 }
 
 
@@ -79,9 +109,9 @@ $('#btnRegister').click(function (event) {
 $('#btnSaveRsvp').click(function (event) {
     event.preventDefault();
     var invite = $("#hdnInvite").val();
-    $('#btnSaveRsvp').prop("disabled", true);
-    $('#btnSaveRsvp').html("Saving; Please wait...");
 
+    changeSaveRsvpButton("saving");
+    
     // Find all forms on the page
     var forms = [];
     $("form").each(function () {
@@ -130,8 +160,7 @@ $('#btnSaveRsvp').click(function (event) {
             if (!allOk) {
                 cbSaveRsvpAjaxError();
             }
-            $('#btnSaveRsvp').html("Saved!");
-            $('#btnSaveRsvp').prop("disabled", false);
+            changeSaveRsvpButton("saved");
         })
 
     }
@@ -139,6 +168,7 @@ $('#btnSaveRsvp').click(function (event) {
     // Failsafe to re-enable save button
     setTimeout(function () {
         $('#btnSaveRsvp').prop("disabled", false);
+        if ($('#btnSaveRsvp').html() === "Saving; Please wait...") { $('#btnSaveRsvp').html("Save Responses");}
     }, 2500);
 });
 
