@@ -102,7 +102,9 @@ module.exports = {
                 if (result.length > 0) {
                     var people = [];
                     var person = 0;
+                    console.log("Entered people enumeration");
                     result.forEach(function (value) {
+                        console.log("Retreived person " + value[id] + " on invite " + value[invite] + " == ceremony: " + value[attendCeremony] + ", reception: " + value[attendReception] + ", evening: " + value[attendEvening] + ", requirements: " + value[requirements]);
                         thisPerson = { "id": value[id], "invite": value[invite], "name": value[name], "ceremony": value[attendCeremony], "reception": value[attendReception], "evening": value[attendEvening], "requirements": value[requirements] };
                         people[person] = thisPerson;
                         person++;
