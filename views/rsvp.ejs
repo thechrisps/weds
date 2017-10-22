@@ -27,12 +27,12 @@
                     <tbody>
                         <% for (var i = 0; i < people.length; i++) { %>
                         <tr>
-                            <td><%= people[i].name %></td>
+                            <td><%= people[i].name %><%= people[i].ceremony %></td>
                             <td>
                                 <select class="form-control">
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
-                                    <option value="unknown">Don't Know</option>
+                                    <option value="yes" <%if (people[i].ceremony==="1") {%>selected<%}%>>Yes</option>
+                                    <option value="no" <%if (people[i].ceremony==="0") {%>selected<%}%>>No</option>
+                                    <option value="unknown" <%if (people[i].ceremony==="-1") {%>selected<%}%>>Don't Know</option>
                                 </select>
                             </td>
                             <td>
