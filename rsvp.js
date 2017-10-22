@@ -61,6 +61,7 @@ module.exports = function (app) {
         if (isValidInvite(inviteCode)) {
             utils.checkInvite(inviteCode, function (friendlyName) {
                 utils.getPeopleForInvite(inviteCode, function (people) {
+                    console.log("Rendering RSVP with: "+util.inspect(people, false, null));
                     res.render("rsvp", { "inviteCode": inviteCode, "people": people });
                 });
             });
