@@ -1,4 +1,4 @@
-﻿function cbSaveRsvpAjaxError(idNumber) {
+﻿function cbSaveRsvpAjaxError() {
     BootstrapDialog.show({
         title: 'Ooops',
         message: 'Sorry, but unfortunately we were unable to save the response for all people on this invite. Please ensure you have selected responses for each person and try again. If the problem persists, give us a call or message us on Facebook. Thanks.',
@@ -9,6 +9,10 @@
             }
         }]
     });
+}
+
+function setCanSave() {
+    $('#btnSaveRsvp').html("Save Responses");
 }
 
 
@@ -107,15 +111,25 @@ $('#btnSaveRsvp').click(function (event) {
             console.log("Adding deferred AJAX for person " + idNumber + ", ceremony:" + ceremony + ", reception:" + reception + ", evening:" + evening + ", requirements:" + requirements);
             deferreds.push($.ajax({
                 url: '/rsvpsave/' + invite,
-                data: { "personid": idNumber, "ceremony": ceremony, "reception": reception, "evening": evening, "requirements": requirements },
-                error: cbSaveRsvpAjaxError(idNumber)
+                data: { "personid": idNumber, "ceremony": ceremony, "reception": reception, "evening": evening, "requirements": requirements }
             }));
         });
 
         // Fire the deferred objects and wait for completion
         $.when.apply($, deferreds).done(function () {
             console.log(arguments); //array of responses [0][data, status, xhrObj],[1][data, status, xhrObj]...
-            $('#lblSave').html("Saved!");
+            var allOk = true;
+            arguments.forEach(function (argument) {
+                console.log("Response correctly processed? " + argument[0].response.valid);
+                if (argument[0].response.valid == 0) {
+                    allOk = false;
+                }
+            });
+
+            if (!allOk) {
+                cbSaveRsvpAjaxError();
+            }
+            $('#btnSaveRsvp').html("Saved!");
             $('#btnSaveRsvp').prop("disabled", false);
         })
 
