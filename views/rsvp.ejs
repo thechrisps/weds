@@ -27,7 +27,7 @@
                     </thead>
                     <tbody>
                         <% for (var i = 0; i < people.length; i++) { %>
-                        <form id='person<%= people[i].personId%>'>
+                        <form id='person<%= people[i].id%>'>
                             <tr>
                                 <td><%= people[i].name %></td>
                                 <td>
@@ -38,21 +38,21 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-control" id='reception<%= people[i].personId%>' onchange="setCanSave()">
+                                    <select class="form-control" id='reception<%= people[i].id%>' onchange="setCanSave()">
                                         <option value="1" <%if (people[i].reception==="1") {%>selected<%}%>>Yes</option>
                                         <option value="0" <%if (people[i].reception==="0") {%>selected<%}%>>No</option>
                                         <option value="-1" <%if (people[i].reception==="-1") {%>selected<%}%>>Don't Know</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-control" id='evening<%= people[i].personId%>' onchange="setCanSave()">
+                                    <select class="form-control" id='evening<%= people[i].id%>' onchange="setCanSave()">
                                         <option value="1" <%if (people[i].evening==="1") {%>selected<%}%>>Yes</option>
                                         <option value="0" <%if (people[i].evening==="0") {%>selected<%}%>>No</option>
                                         <option value="-1" <%if (people[i].evening==="-1") {%>selected<%}%>>Don't Know</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" id='txtRequirements<%= people[i].personId%>' value='<%= people[i].requirements%>' placeholder="Enter special requirements/requests" id='requirements<%= people[i].personId%>' onchange="setCanSave()">
+                                    <input type="text" class="form-control" id='txtRequirements<%= people[i].id%>' value='<%= people[i].requirements%>' placeholder="Enter special requirements/requests" id='requirements<%= people[i].personId%>' onchange="setCanSave()">
                                 </td>
                             </tr>
                         </form>
