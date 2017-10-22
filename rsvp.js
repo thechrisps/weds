@@ -11,9 +11,13 @@ module.exports = function (app) {
         var inviteCode = jsesc(req.params.code);
         console.log("RSVP Save == Code:" + inviteCode + ". Query String: " + util.inspect(req.query, false, null));
         var person = parseInt(req.query.personid);
+        console.log("Person ID: " + person);
         var ceremony = parseInt(req.query.ceremony);
+        console.log("Ceremony: " + ceremony);
         var reception = parseInt(req.query.reception);
+        console.log("Reception: " + reception);
         var evening = parseInt(req.query.evening);
+        console.log("Evening: " + evening);
         var requirements = jsesc(req.query.requirements);
 
         if (isNaN(person) || isNaN(ceremony) || isNaN(reception) || isNaN(evening)) {
