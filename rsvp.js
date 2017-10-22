@@ -60,10 +60,14 @@ module.exports = function (app) {
         var inviteCode = req.params.code;
         if (isValidInvite(inviteCode)) {
             utils.checkInvite(inviteCode, function (friendlyName) {
-                utils.getPeopleForInvite(inviteCode, function (people) {
-                    console.log("Rendering RSVP with: "+util.inspect(people, false, null));
-                    res.render("rsvp", { "inviteCode": inviteCode, "people": people });
-                });
+                if (friendlyName != "") {
+                    utils.getPeopleForInvite(inviteCode, function (people) {
+                        console.log("Rendering RSVP with: " + util.inspect(people, false, null));
+                        res.render("rsvp", { "inviteCode": inviteCode, "friendlyName": friendlyName, "people": people });
+                    });
+                } else {
+                    res.redirect("/invite/");
+                }
             });
         }
     });
