@@ -107,7 +107,7 @@ $('#btnSaveRsvp').click(function (event) {
             console.log("Adding deferred AJAX for person " + idNumber + ", ceremony:" + ceremony + ", reception:" + reception + ", evening:" + evening + ", requirements:" + requirements);
             deferreds.push($.ajax({
                 url: '/rsvpsave/' + invite,
-                data: { "person": idNumber, "ceremony": ceremony, "reception": reception, "evening": evening, "requirements": requirements },
+                data: { "personid": idNumber, "ceremony": ceremony, "reception": reception, "evening": evening, "requirements": requirements },
                 error: cbSaveRsvpAjaxError(idNumber)
             }));
         });
