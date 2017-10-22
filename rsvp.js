@@ -10,11 +10,16 @@ module.exports = function (app) {
     app.get('/rsvpsave/:code', function (req, res) {
         var inviteCode = jsesc(req.params.code);
         console.log("RSVP Save == Code:" + inviteCode + ". Query String: " + util.inspect(req.query, false, null));
-        var person = ((isNaN(req.query.personid) == false) ? req.query.personid : 0);
-        var ceremony = ((req.query.ceremony === "yes") ? 1 : 0);
-        var reception = ((req.query.reception === "yes") ? 1 : 0);
-        var evening = ((req.query.evening === "yes") ? 1 : 0)
+        var person = parseInt(req.query.personid);
+        var ceremony = parseInt(req.query.ceremony);
+        var reception = parseInt(req.query.reception);
+        var evening = parseInt(req.query.evening);
         var requirements = jsesc(req.query.requirements);
+
+        if (isNaN(person) || isNaN(ceremony) || isNaN(reception) || isNaN(evening)) {
+            utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0", "error": "We're very sorry, but your responses have not been handled correctly. Please try again, or contact us on Facebook / by phone." } });
+            return
+        }
 
         console.log("Updating attendance for person " + person + " on invite " + inviteCode + ". Attending... ceremony: " + ceremony + ", reception: " + reception + ", evening: " + evening+". Requirements: "+requirements);
 
@@ -26,19 +31,24 @@ module.exports = function (app) {
                         if (results != "Error" && results > 0) {
                             // Returning success
                             utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "1" } });
+                            return;
                         } else {
                             utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0", "error": "We're very sorry, but for some reason, your response has not been saved. Please try again, or contact us on Facebook / by phone." } });
+                            return;
                         }
                     });
                     if (dbResponse === "Error") {
                         utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0", "error": "We're very sorry, but we have been unable to connect to our database. We cannot save your RSVP responses. Please try again, or contact us on Facebook / by phone." } });
+                        return;
                     }
                 } else {
                     utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0", "error": "Invite code " + inviteCode + " does not seem to be a code that we recognise." } });
+                    return;
                 }
             });
         } else {
             utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0", "error": "Invite code " + inviteCode + " does not appear to be valid." } });
+            return;
         }
     });
 
