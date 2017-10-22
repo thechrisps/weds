@@ -22,7 +22,7 @@ module.exports = function (app) {
 
         if (isNaN(person) || isNaN(ceremony) || isNaN(reception) || isNaN(evening)) {
             utils.dispatchJsonResponse(res, { "status": "ok", "response": { "valid": "0", "error": "We're very sorry, but your responses have not been handled correctly. Please try again, or contact us on Facebook / by phone." } });
-            return
+            return;
         }
 
         console.log("Updating attendance for person " + person + " on invite " + inviteCode + ". Attending... ceremony: " + ceremony + ", reception: " + reception + ", evening: " + evening+". Requirements: "+requirements);
@@ -60,7 +60,9 @@ module.exports = function (app) {
         var inviteCode = req.params.code;
         if (isValidInvite(inviteCode)) {
             utils.checkInvite(inviteCode, function (friendlyName) {
-                res.render("rsvp", {"inviteCode":inviteCode, "people": [{ name: "Joe", personId: "1", ceremony: "1", reception: "1", evening: "-1", requirements: "None" }, { name: "Fred", personId: "2", ceremony: "-1", reception: "-1", evening: "0", requirements: "Vegan" }] });
+                getPeopleForInvite(inviteCode, function (people) {
+                    res.render("rsvp", { "inviteCode": inviteCode, "people": people });
+                });
             });
         }
     });
