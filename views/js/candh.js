@@ -81,7 +81,7 @@ $('#btnSaveRsvp').click(function (event) {
     // Find all forms on the page
     var forms = [];
     $("form").each(function () {
-        forms.push(this.name);
+        forms.push(this.id);
     });
 
     //Pull the forms that exist on the page (i.e. pull the people - 1 form per person)
@@ -100,11 +100,11 @@ $('#btnSaveRsvp').click(function (event) {
     if (formIds.length > 0) {
         // Create the deferred object
         formIds.forEach(function (idNumber) {
-            console.log("Adding deferred AJAX for person " + idNumber)
             var ceremony = $('#ceremony' + idNumber).val();
             var reception = $('#reception' + idNumber).val();
             var evening = $('#evening' + idNumber).val();
             var requirements = $('#txtRequirements' + idNumber).val();
+            console.log("Adding deferred AJAX for person " + idNumber + ", ceremony:" + ceremony + ", reception:" + reception + ", evening:" + evening + ", requirements:" + requirements);
             deferreds.push($.ajax({
                 url: '/rsvpsave/' + invite,
                 data: { "person": idNumber, "ceremony": ceremony, "reception": reception, "evening": evening, "requirements": requirements },
