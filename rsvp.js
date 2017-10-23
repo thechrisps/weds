@@ -69,6 +69,8 @@ module.exports = function (app) {
                     res.render("invite");
                 }
             });
+        } else {
+            res.render("invite");
         }
     });
 }
