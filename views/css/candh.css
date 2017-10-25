@@ -76,6 +76,14 @@ input[type="text"].focus {
     margin: 0;
 }
 
+.headerText {
+    color: #eee;
+    text-shadow: 0 0 3px #000000;
+    font-family: 'Arvo', serif;
+    font-size: 20px;
+    font-weight: bold;  
+}
+
 .table > tbody > tr > td {
     vertical-align: middle;
 }
