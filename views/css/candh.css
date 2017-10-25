@@ -81,7 +81,12 @@ input[type="text"].focus {
     text-shadow: 0 0 3px #000000;
     font-family: 'Arvo', serif;
     font-size: 20px;
-    font-weight: bold;  
+    font-weight: bold;
+}
+
+h2.headerText {
+    color #eee;
+    text-shadow: 0 0 3px #000000;
 }
 
 .table > tbody > tr > td {
