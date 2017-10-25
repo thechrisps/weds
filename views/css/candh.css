@@ -76,7 +76,7 @@ input[type="text"].focus {
     margin: 0;
 }
 
-.headerText {
+p.headerText {
     color: #eee;
     text-shadow: 0 0 3px #000000;
     font-family: 'Arvo', serif;
