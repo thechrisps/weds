@@ -7,6 +7,7 @@ h1 {font-family: 'Bad Script', cursive; font-size:30px;}
 }
 
 @media only screen and (max-width: 579px) {
+    .contentBoxNoBackground { padding: 10px; }
     #contentBox { width:100%; }
     #stdlarge img { width:305px; height: 205px;}
     .fullWidthFormElement { width: 90%; }
@@ -14,34 +15,81 @@ h1 {font-family: 'Bad Script', cursive; font-size:30px;}
 
 .logoTopPad {padding-top:50px;}
 
-.header {background: url(../img/web1920-fade.jpg) no-repeat center center scroll; background-size:cover;}
-.headerFaded {
-    background: url(../img/web1920.jpg) no-repeat center center scroll;
-    background-size: cover;
+@media only screen and (max-width: 579px) {
+    .header {
+        display: none;
+    }
+
+    p,h3 {
+        text-align:left;
+    }
+
+    .featureImage {
+        display: none;
+    }
 }
 
-.kayak {
-    background: url(../img/kayak.jpg) no-repeat center center scroll;
-    background-size: cover;
+@media only screen and (min-width: 580px) {
+    .header {
+        display: table;
+    }
+
+    .featureImage {
+        display: inline;
+    }
+
+    p.headerText {
+        color: #eee;
+        text-shadow: 0 0 3px #000000;
+        font-family: 'Arvo', serif;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    h2.headerText {
+        color: #eee;
+        text-shadow: 0 0 3px #000000;
+    }
 }
 
-.snowdon {
-    background: url(../img/snowdon.jpg) no-repeat center center scroll;
-    background-size: cover;
+@media only screen and (min-width: 580px) {
+    .header {
+        background: url(../img/web1920-fade.jpg) no-repeat center center scroll;
+        background-size: cover;
+    }
+
+    .headerFaded {
+        background: url(../img/web1920.jpg) no-repeat center center scroll;
+        background-size: cover;
+    }
+
+    .kayak {
+        background: url(../img/kayak.jpg) no-repeat center center scroll;
+        background-size: cover;
+    }
+
+    .snowdon {
+        background: url(../img/snowdon.jpg) no-repeat center center scroll;
+        background-size: cover;
+    }
+}
+
+.alwaysShow {
+    display:table;
 }
 
 #contentBox {
-    border-radius:15px;
+    border-radius: 15px;
     padding: 15px;
-    margin-bottom:15px;
+    margin-bottom: 15px;
     font-family: 'Arvo', serif;
     font-size: 20px;
-    font-weight: bold; 
+    font-weight: bold;
     color: #222;
 }
 
 .contentBoxNoBackground {
-    background-color:none;
+    background-color: none;
 }
 
 .contentBoxBackground {
@@ -53,7 +101,7 @@ h1 {font-family: 'Bad Script', cursive; font-size:30px;}
 }
 
 img#logo {
-    max-width:50%;
+    max-width: 50%;
 }
 
 input[type="text"] {
@@ -62,7 +110,7 @@ input[type="text"] {
     font-size: 18px;
     text-align: center;
     appearance: none;
-    box-shadow: none; 
+    box-shadow: none;
     border-radius: 15px;
 }
 
@@ -75,10 +123,11 @@ input[type="text"] {
     border: solid 5px #c9c9c9;
     transition: border 0.3s;
 }
-input[type="text"]:focus,
-input[type="text"].focus {
+
+    input[type="text"]:focus,
+    input[type="text"].focus {
         border: solid 5px #969696;
-}
+    }
 
 .inviteButton {
     width: 40%;
@@ -91,20 +140,7 @@ input[type="text"].focus {
 }
 
 .clear-bottom {
-    margin-bottom:20px;
-}
-
-p.headerText {
-    color: #eee;
-    text-shadow: 0 0 3px #000000;
-    font-family: 'Arvo', serif;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-h2.headerText {
-    color: #eee;
-    text-shadow: 0 0 3px #000000;
+    margin-bottom: 20px;
 }
 
 .table > tbody > tr > td {
