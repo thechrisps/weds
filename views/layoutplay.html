@@ -1,0 +1,331 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Hazel &amp; Chris</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+    <link href="css/bootstrap-dialog.min.css" rel="stylesheet">
+    <link href="css/candh.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Welcome <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#rsvp">RSVP</a></li>
+                    <li><a href="#accomodation">Accommodation</a></li>
+                    <li><a href="#location">Location</a></li>
+                    <li><a href="#">Wedding List</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <header id="top" class="header">
+        <div class="text-vertical-center logoTopPad">
+            <div id="contentBox" class="contentBoxNoBackground">
+                <img id="logo" src="img/logosmall.png" alt="" />
+            </div>
+            <div class="contentBoxNoBackground">
+                <p>&nbsp;<br /></p>
+                <h2 class="headerText">Welcome</h2>
+                <p class="headerText">We are delighted to invite you to the wedding of Hazel and Chris on 7th April 2018.</p>
+                <p class="headerText">Please use the menu above or scroll down to view essential information on location and accommodation and to let us know if you can make it.</p>
+                <p class="headerText">To allow for appropriate preparations, we request that you reply by the 1st January 2018.</p>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- RSVP -->
+    <section id="rsvp" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>RSVP</h2>
+                    <p class="lead">We would be delighted if you are able to attend our wedding at Bisham Church and Bisham Abbey on the 7th April 2018. </p>
+                    <p>Please select below if you can attend or if you have any special requirements and press save.</p>
+                    <p>We would very much appreciate if you are able to let us know by 1st January 2018. If you have any questions, do give us a call or drop us a message on Facebook.</p>
+                </div>
+            </div>
+            <!-- /.row -->
+            <input type="hidden" name="hdnInvite" id="hdnInvite" value="">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td></td>
+                                <td>I can attend the ceremony</td>
+                                <td>I can attend the reception</td>
+                                <td>I can attend the evening</td>
+                                <td>Special requirements</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <form id='person'>
+                                <tr>
+                                    <td>Bob</td>
+                                    <td>
+                                        <select class="form-control" id='ceremony' onchange="setCanSave()">
+                                            <option value="1"</option>
+                                            <option value="0"</option>
+                                            <option value="-1"</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" id='reception' onchange="setCanSave()">
+                                            <option value="1"</option>
+                                            <option value="0"</option>
+                                            <option value="-1"</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" id='evening' onchange="setCanSave()">
+                                            <option value="1"</option>
+                                            <option value="0"</option>
+                                            <option value="-1"</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" id='txtRequirements' value='' placeholder="Enter special requirements/requests" id='requirements<%= people[i].personId%>' onchange="setCanSave()">
+                                    </td>
+                                </tr>
+                            </form>
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-primary" id="btnSaveRsvp">Save Responses</button>&nbsp;&nbsp;<div id="lblSave"></div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <section id="kayak" class="header kayak">
+        <div class="text-vertical-center logoTopPad">
+            
+        </div>
+    </section>
+
+    <!-- Accommodation -->
+    <section id="accomodation" class="about contentBoxLightGray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Accommodation</h2>
+                    <p>If you want to stay over in the local area for the wedding, there are various accommodation options.</p>
+                    <p>The most convenient accommodation is onsite at Bisham Abbey. At the time of writing, this is also the cheapest. However, there is a limited number of rooms available, so if you want to take this option, we recommend you book soon.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 text-center clear-bottom">
+                    <img id="logo" src="img/circle_baaccommodation.png" alt="" />
+                </div>
+                <div class="col-lg-6">
+                    <h3>Bisham Abbey Rooms</h3>
+                    <p>Bisham Abbey National Sports Centre has around 50 newly built rooms for sports clubs. Guests can book these rooms, but we do not have exclusivity on occupancy, so they may sell out.</p>
+                    <p><b>Cost (pr/pn):</b> Double - £86. Single - £70. Child bed - £15. Cots £10 </p>
+                    <p><b>Location:</b>Onsite</p>
+                    <p><b>Note:</b> Child beds can only put in two of the rooms. We have reserved these rooms, so let us know if you need one.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 text-center clear-bottom">
+                    <img id="logo" src="img/circle_gandd.png" alt="" />
+                </div>
+                <div class="col-lg-6">
+                    <h3>Premiere Inn, Marlow</h3>
+                    <p>A Premiere Inn located just the other side of Marlow Bridge as part of the George and Dragon pub.</p>
+                    <p><b>Cost (pr/pn):</b> At time of writing (October 17): £96 for a double room</p>
+                    <p><b>Location:</b>Just over a mile from Bisham Abbey</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <h3>Crowne Plaza Marlow</h3>
+                    <p>A Crowne Plaza hotel the other side of Marlow. Has full hotel facilities</p>
+                    <p><b>Cost (pr/pn):</b> At time of writing (October 17): £99 for a double room</p>
+                    <p><b>Location:</b>About 2 miles from Bisham Abbey</p>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <h3>Other Options</h3>
+                    <p><a href="https://www.laterooms.com/en/k16296503_marlow-hotels.aspx?k=Marlow%2C+UK&n=1&d=20180407&et=DEST&rt=2-0" target="_blank">Click here</a> for a search on Laterooms listing other options.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <section id="kayak" class="header snowdon">
+        <div class="text-vertical-center logoTopPad">
+
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section id="location" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center clear-bottom">
+                    <h2>Location &amp; Times</h2>
+                    <p>If you want to stay over in the local area for the wedding, there are various accommodation options.</p>
+                    <p>The most convenient accommodation is onsite at Bisham Abbey. At the time of writing, this is also the cheapest. However, there is a limited number of rooms available, so if you want to take this option, we recommend you book soon.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 text-center clear-bottom">
+                    <img id="logo" src="img/circle_church.png" alt="" />
+                </div>
+                <div class="col-lg-6">
+                    <h3>Ceremony</h3>
+                    <p>The wedding ceremony is at <b>12:15 on 7th April 2018</b> at <b>Bisham Church, SL7 1RW</b></p>
+                    <p>Parking: We have arranged for use of the co-located <b>Bisham School</b> car park. This should provide ample parking for all guests. The school and church are clearly signposted from the main road. Once you have turned off the main road, turn immediately right through the school gates. Continue round to the front of the school for extended parking.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img id="logo" src="img/circle_abbey.png" alt="" />
+                </div>
+                <div class="col-lg-6">
+                    <h3>Reception</h3>
+                    <p>The reception will be following the ceremony and is at <b>Bisham Abbey National Sport Centre</b>.</p>
+                    <p>Bisham Church and Abbey are neighbors. However as the Abbey grounds are quite large, the drive or walk along the road is around 900m. It is possible to cut across the Abbey grounds, however the grass is often wet and muddy, so not recommended; especially for high heels!</p>
+                    <p>There will be a meal at around 15:30. The menu has not yet been formalised. We will email you when this is available. However, if you have any requirements (such as vegetarian food), please include this on your RSVP.</p>
+                    <p>There will be light food and a ceilidh in the evening.</p>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Map -->
+    <section id="map" class="map">
+        <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/d/embed?mid=1TtGBMRfPji7y11ayU0uLwoPKgEc"></iframe>
+        <br />
+        <small>
+            <a href="https://www.google.com/maps/d/embed?mid=1TtGBMRfPji7y11ayU0uLwoPKgEc"></a>
+        </small>
+    </section>
+
+
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-dialog.min.js"></script>
+    <!-- Site JS -->
+    <script src="js/candh.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script>
+        // Closes the sidebar menu
+        $("#menu-close").click(function (e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+        // Opens the sidebar menu
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+        // Scrolls to the selected menu item on the page
+        $(function () {
+            $('a[href*=\\#]:not([href=\\#],[data-toggle],[data-target],[data-slide])').click(function () {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        $('html,body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000);
+                        return false;
+                    }
+                }
+            });
+        });
+        //#to-top button appears after scrolling
+        var fixed = false;
+        $(document).scroll(function () {
+            if ($(this).scrollTop() > 250) {
+                if (!fixed) {
+                    fixed = true;
+                    // $('#to-top').css({position:'fixed', display:'block'});
+                    $('#to-top').show("slow", function () {
+                        $('#to-top').css({
+                            position: 'fixed',
+                            display: 'block'
+                        });
+                    });
+                }
+            } else {
+                if (fixed) {
+                    fixed = false;
+                    $('#to-top').hide("slow", function () {
+                        $('#to-top').css({
+                            display: 'none'
+                        });
+                    });
+                }
+            }
+        });
+        // Disable Google Maps scrolling
+        // See http://stackoverflow.com/a/25904582/1607849
+        // Disable scroll zooming and bind back the click event
+        var onMapMouseleaveHandler = function (event) {
+            var that = $(this);
+            that.on('click', onMapClickHandler);
+            that.off('mouseleave', onMapMouseleaveHandler);
+            that.find('iframe').css("pointer-events", "none");
+        }
+        var onMapClickHandler = function (event) {
+            var that = $(this);
+            // Disable the click handler until the user leaves the map area
+            that.off('click', onMapClickHandler);
+            // Enable scrolling zoom
+            that.find('iframe').css("pointer-events", "auto");
+            // Handle the mouse leave event
+            that.on('mouseleave', onMapMouseleaveHandler);
+        }
+        // Enable map zooming with mouse scroll when the user clicks the map
+        $('.map').on('click', onMapClickHandler);
+    </script>
+</body>
+</html>
