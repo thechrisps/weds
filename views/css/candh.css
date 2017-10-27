@@ -13,7 +13,7 @@ h1 {font-family: 'Bad Script', cursive; font-size:30px;}
     .fullWidthFormElement { width: 90%; }
 }
 
-.logoTopPad {padding-top:50px;}
+.logoTopPad {padding-top:80px;}
 
 @media only screen and (max-width: 579px) {
     .header {
