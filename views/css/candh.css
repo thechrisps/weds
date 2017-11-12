@@ -54,7 +54,7 @@ h1 {font-family: 'Bad Script', cursive; font-size:30px;}
 
 @media only screen and (min-width: 580px) {
     .header {
-        background: url(../img/web1920-fade.jpg) no-repeat center center scroll;
+        background: url(../img/web1920.jpg) no-repeat center center scroll;
         background-size: cover;
     }
 
@@ -64,7 +64,7 @@ h1 {font-family: 'Bad Script', cursive; font-size:30px;}
     }
 
     .kayak {
-        background: url(../img/kayak.jpg) no-repeat center center scroll;
+        background: url(../img/web1920-bike.jpg) no-repeat center center scroll;
         background-size: cover;
     }
 

@@ -1,4 +1,5 @@
 var mysql = require('mysql');
+var nodemailer = require('nodemailer');
 
 module.exports = {
 	getDatabaseDefinition: function () {
@@ -147,6 +148,25 @@ module.exports = {
                 
                 responseCb(result.affectedRows);
             });
+        });
+    },
+    sendEmail: function (inviteCode, personId, ceremony, reception, evening, requirements, responseCb) {
+        var databaseDetails = module.exports.getDatabaseDefinition();
+
+        var con = mysql.createConnection({
+            host: databaseDetails[0].split(":")[0],
+            port: databaseDetails[0].split(":")[1],
+            user: databaseDetails[2],
+            password: databaseDetails[3],
+            database: databaseDetails[1]
+        });
+
+        var transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: 'chrisps@gmail.com', // Your email id
+                pass: 'password' // Your password
+            }
         });
     }
 };
