@@ -59,7 +59,7 @@ $('#btnInviteSubmit').click(function (event) {
         error: cbInviteValidateError,
         success: function (data) {
             if (data.response.valid === "1") {
-                window.location.replace("/invite/" + enteredCode);
+                window.location.replace("/rsvpview/" + enteredCode);
             } else {
                 $('#inviteMessage').html("<img src='img/exclaimation.png' alt='' /><br />Sorry, your code doesn't appear to be valid. Please check and try again. Still having problems? Please drop us a message on Facebook or by phone. Thanks!");
             }
